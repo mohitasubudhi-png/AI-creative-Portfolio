@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohita Subudhi | AI Director</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/main3.css">
+</head>
+<body class="loading">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-brand loader-text">Mohita Subudhi</div>
+        <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+    </div>
+    <!-- Ambient Dynamic Scene Glows -->
+    <div class="ambient-scene">
+        <div class="ambient-glow-1"></div>
+        <div class="ambient-glow-2"></div>
+    </div>
+
+    <!-- Floating Spatial Dock -->
+    <nav class="spatial-dock">
+        <button class="dock-btn active" title="Cinema Showcase" onclick="filterCategory('all', this)"><i data-lucide="tv"></i></button>
+        <button class="dock-btn" title="Commercial Projects" onclick="filterCategory('commercial', this)"><i data-lucide="clapperboard"></i></button>
+        <button class="dock-btn" title="Fashion Editorial" onclick="filterCategory('fashion', this)"><i data-lucide="sparkles"></i></button>
+        <button class="dock-btn" title="Cinematic Narratives" onclick="filterCategory('cinematics', this)"><i data-lucide="film"></i></button>
+        <button class="dock-btn" title="Social & Reels" onclick="filterCategory('social', this)"><i data-lucide="instagram"></i></button>
+        <button class="dock-btn" title="Director Profile" onclick="document.getElementById('about-modal').classList.add('active')"><i data-lucide="user"></i></button>
+        <button class="dock-btn" title="Contact & Booking" onclick="document.getElementById('contact-modal').classList.add('active')"><i data-lucide="mail"></i></button>
+    </nav>
+
+    <!-- Main Spatial Canvas Window -->
+    <div class="spatial-workspace">
+        <main class="spatial-window">
+
+            <!-- Window Topbar -->
+            <header class="window-topbar">
+                <div class="topbar-left">
+                    <div class="traffic-lights">
+                        <span class="traffic-dot dot-red"></span>
+                        <span class="traffic-dot dot-yellow"></span>
+                        <span class="traffic-dot dot-green"></span>
+                    </div>
+                    <div class="search-pill">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Search films, fashion, ads..." id="portfolio-search" oninput="handleSearch(this.value)">
+                    </div>
+                </div>
+
+                <!-- Center Filter Pills -->
+                <nav class="category-tabs">
+                    <button class="tab-btn active" onclick="filterCategory('all', this)">All Films</button>
+                    <button class="tab-btn" onclick="filterCategory('commercial', this)">Commercial</button>
+                    <button class="tab-btn" onclick="filterCategory('fashion', this)">Fashion</button>
+                    <button class="tab-btn" onclick="filterCategory('cinematics', this)">Cinematics</button>
+                    <button class="tab-btn" onclick="filterCategory('social', this)">Social & Reels</button>
+                </nav>
+
+                <!-- Director Profile Chip & Action Buttons -->
+                <div class="topbar-right">
+                    <div class="director-chip" onclick="document.getElementById('about-modal').classList.add('active')">
+                        <img src="assets/images/ChatGPT Image Aug 28, 2026, 08_25_00 PM.png" alt="Mohita Subudhi" class="director-avatar">
+                        <div class="director-info">
+                            <span class="director-name">Mohita Subudhi</span>
+                            <span class="director-role">AI Film Director</span>
+                        </div>
+                    </div>
+                    <button class="icon-action-btn" title="Get in touch" onclick="document.getElementById('contact-modal').classList.add('active')">
+                        <i data-lucide="send"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ─── Hero Cinematic Stage (Featured Spotlight + Sidebar Previews) ─── -->
+            <section class="cinematic-stage">
+                
+                <!-- Left Sidebar Previews ("New Drops / Quick Teasers") -->
+                <aside class="stage-sidebar">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title"><i data-lucide="flame" style="width:16px;height:16px;color:#f43f5e"></i> Spotlight Cuts</span>
+                        <span class="sidebar-sub">Quick Watch</span>
+                    </div>
+                    <div class="sidebar-card-list">
+
+                        <!-- Preview 1: Action Fighting -->
+                        <div class="sidebar-card open-modal" data-modal="modal-fighting">
+                            <video autoplay muted loop playsinline><source src="assets/videos/cinematics/Fighting/Full 1.mp4" type="video/mp4"></video>
+                            <div class="sidebar-card-content">
+                                <div class="card-label-group">
+                                    <h4>Action Cinema</h4>
+                                    <span>Cinematic Stunt Film</span>
+                                </div>
+                                <div class="mini-play-icon"><i data-lucide="play"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Preview 2: Jewelry Luxury -->
+                        <div class="sidebar-card open-modal" data-modal="modal-jewelry">
+                            <video autoplay muted loop playsinline><source src="assets/videos/Commercial/jewelry/1.mp4" type="video/mp4"></video>
+                            <div class="sidebar-card-content">
+                                <div class="card-label-group">
+                                    <h4>Jewelry Velvet</h4>
+                                    <span>8 Films Collection</span>
+                                </div>
+                                <div class="mini-play-icon"><i data-lucide="play"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Preview 3: Sneaker Commercial -->
+                        <div class="sidebar-card open-modal" data-modal="modal-sneaker">
+                            <video autoplay muted loop playsinline><source src="assets/videos/Commercial/sneaker/Sneaker.mp4" type="video/mp4"></video>
+                            <div class="sidebar-card-content">
+                                <div class="card-label-group">
+                                    <h4>Sneaker Dynamic</h4>
+                                    <span>6 Ad Variants</span>
+                                </div>
+                                <div class="mini-play-icon"><i data-lucide="play"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Preview 4: Mythology Ramayan -->
+                        <div class="sidebar-card open-modal" data-modal="modal-mythology">
+                            <video autoplay muted loop playsinline><source src="assets/videos/cinematics/Mythology/Ramayan.mp4" type="video/mp4"></video>
+                            <div class="sidebar-card-content">
+                                <div class="card-label-group">
+                                    <h4>Mythology Epic</h4>
+                                    <span>Sacred Legends</span>
+                                </div>
+                                <div class="mini-play-icon"><i data-lucide="play"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </aside>
+
+                <!-- Right Feature Card: Mornze Campaign (Spotlight Film) -->
+                <article class="spotlight-card open-modal" data-modal="modal-mornze">
+                    <video autoplay muted loop playsinline class="spotlight-bg-video">
+                        <source src="assets/videos/mornze/1.mp4" type="video/mp4">
+                    </video>
+                    <div class="spotlight-overlay"></div>
+                    <div class="spotlight-content">
+                        <div class="badge-pill-row">
+                            <span class="badge-hot"><i data-lucide="sparkles"></i> Featured Campaign</span>
+                            <span class="badge-tag">Fashion Editorial</span>
+                            <span class="badge-tag">17 Films</span>
+                        </div>
+                        <h1 class="spotlight-title">Mornze: Urban Archives</h1>
+                        <p class="spotlight-desc">High-fashion cinematic editorial crafted entirely with generative AI cinematography. Featuring fluid camera motion and photorealistic lighting.</p>
+                        <div class="spotlight-actions">
+                            <button class="btn-play-hero open-modal" data-modal="modal-mornze">
+                                <i data-lucide="play"></i>
+                                <span>Watch All 17 Films</span>
+                            </button>
+                            <button class="btn-glass-hero open-modal" data-modal="modal-mornze">
+                                <i data-lucide="layers"></i>
+                                <span>Explore Gallery</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ─── Showcase Row 1: Commercial Productions ─── -->
+            <section class="showcase-row portfolio-group" data-category="commercial">
+                <div class="row-header">
+                    <div class="row-title-group">
+                        <h2 class="row-title">Commercial & Brand Campaigns</h2>
+                        <span class="row-count">10 Productions</span>
+                    </div>
+                    <button class="row-see-all open-modal" data-modal="modal-jewelry">See Collection <i data-lucide="chevron-right"></i></button>
+                </div>
+                <div class="cards-scroll-grid">
+
+                    <!-- Jewelry -->
+                    <div class="spatial-card open-modal" data-modal="modal-jewelry" data-tags="jewelry commercial luxury fashion">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/jewelry/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Royal Jewelry</h3>
+                                <span class="card-meta-tag">Commercial · 8 Videos</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Sneaker -->
+                    <div class="spatial-card open-modal" data-modal="modal-sneaker" data-tags="sneaker commercial streetwear shoes">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/sneaker/Sneaker.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Sneaker Kinetic</h3>
+                                <span class="card-meta-tag">Streetwear · 6 Videos</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Saree -->
+                    <div class="spatial-card open-modal" data-modal="modal-saree" data-tags="saree ethnic fashion commercial">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/saree/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Silk Saree Editorials</h3>
+                                <span class="card-meta-tag">Couture · 9 Videos</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Cap -->
+                    <div class="spatial-card open-modal" data-modal="modal-cap" data-tags="cap streetwear lifestyle commercial">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/cap/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Homme Caps</h3>
+                                <span class="card-meta-tag">Headwear · 3 Videos</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ─── Showcase Row 2: Cinematics & Narrative ─── -->
+            <section class="showcase-row portfolio-group" data-category="cinematics">
+                <div class="row-header">
+                    <div class="row-title-group">
+                        <h2 class="row-title">Cinematic Narratives & Visual Storytelling</h2>
+                        <span class="row-count">4 Universes</span>
+                    </div>
+                    <button class="row-see-all open-modal" data-modal="modal-fighting">Explore All <i data-lucide="chevron-right"></i></button>
+                </div>
+                <div class="cards-scroll-grid">
+
+                    <!-- Fighting -->
+                    <div class="spatial-card open-modal" data-modal="modal-fighting" data-tags="fighting action martial arts cinematic">
+                        <video autoplay muted loop playsinline><source src="assets/videos/cinematics/Fighting/Full 1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Metro Combat</h3>
+                                <span class="card-meta-tag">Action Cinema · 1 Film</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Mythology -->
+                    <div class="spatial-card open-modal" data-modal="modal-mythology" data-tags="mythology ramayan epic varanasi">
+                        <video autoplay muted loop playsinline><source src="assets/videos/cinematics/Mythology/Ramayan.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Sacred Mythology</h3>
+                                <span class="card-meta-tag">Epic Lore · 2 Films</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Trailer -->
+                    <div class="spatial-card open-modal" data-modal="modal-trailer" data-tags="trailer teaser mystery narrative">
+                        <video autoplay muted loop playsinline><source src="assets/videos/cinematics/Trailor/Library.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Noir Trailer</h3>
+                                <span class="card-meta-tag">Narrative · 2 Teasers</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Love Story -->
+                    <div class="spatial-card open-modal" data-modal="modal-love-story" data-tags="love romance drama couple">
+                        <video autoplay muted loop playsinline><source src="assets/videos/cinematics/love-story/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Poetic Romance</h3>
+                                <span class="card-meta-tag">Drama · 3 Films</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ─── Showcase Row 3: Fashion & Avatars ─── -->
+            <section class="showcase-row portfolio-group" data-category="fashion">
+                <div class="row-header">
+                    <div class="row-title-group">
+                        <h2 class="row-title">Fashion, Kurti & AI Digital Humans</h2>
+                        <span class="row-count">Fashion Series</span>
+                    </div>
+                </div>
+                <div class="cards-scroll-grid">
+
+                    <!-- Kurti Collection -->
+                    <div class="spatial-card open-modal" data-modal="modal-kurti" data-tags="kurti ethnic fashion apparel">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Kurti/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Kurti Haute Couture</h3>
+                                <span class="card-meta-tag">Fashion · 3 Films</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- AI Avatar Persona -->
+                    <div class="spatial-card open-modal" data-modal="modal-ai-avatar" data-tags="avatar persona digital human ai">
+                        <video autoplay muted loop playsinline><source src="assets/videos/AI Avatar/3.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>AI Persona & Avatars</h3>
+                                <span class="card-meta-tag">Digital Human · 3 Videos</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- UGC Content -->
+                    <div class="spatial-card open-modal" data-modal="modal-ugc" data-tags="ugc user content creator brand">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/UGC/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>UGC Creator Ads</h3>
+                                <span class="card-meta-tag">High-converting · 6 Ads</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Watch & Luxury -->
+                    <div class="spatial-card open-modal" data-modal="modal-watch" data-tags="watch timepiece luxury commercial">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Commercial/watch/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info">
+                            <div class="card-text">
+                                <h3>Luxury Timepieces</h3>
+                                <span class="card-meta-tag">Horology · 2 Films</span>
+                            </div>
+                            <div class="card-hover-play"><i data-lucide="play"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ─── Showcase Row 4: Instagram & Social Vertical Reel Stream ─── -->
+            <section class="showcase-row portfolio-group" data-category="social">
+                <div class="row-header">
+                    <div class="row-title-group">
+                        <h2 class="row-title">Social Content & Instagram Reels</h2>
+                        <span class="row-count">14 Reels</span>
+                    </div>
+                    <button class="row-see-all open-modal" data-modal="modal-instagram">Swipe All 14 <i data-lucide="chevron-right"></i></button>
+                </div>
+                <div class="cards-scroll-grid grid-5">
+
+                    <div class="spatial-card open-modal" data-modal="modal-instagram" data-tags="instagram reel social 1">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Instagram/1.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info"><div class="card-text"><h3>Reel #01</h3><span class="card-meta-tag">Social</span></div><div class="card-hover-play"><i data-lucide="play"></i></div></div>
+                    </div>
+                    <div class="spatial-card open-modal" data-modal="modal-instagram" data-tags="instagram reel social 2">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Instagram/2.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info"><div class="card-text"><h3>Reel #02</h3><span class="card-meta-tag">Social</span></div><div class="card-hover-play"><i data-lucide="play"></i></div></div>
+                    </div>
+                    <div class="spatial-card open-modal" data-modal="modal-instagram" data-tags="instagram reel social 3">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Instagram/3.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info"><div class="card-text"><h3>Reel #03</h3><span class="card-meta-tag">Social</span></div><div class="card-hover-play"><i data-lucide="play"></i></div></div>
+                    </div>
+                    <div class="spatial-card open-modal" data-modal="modal-instagram" data-tags="instagram reel social 4">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Instagram/4.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info"><div class="card-text"><h3>Reel #04</h3><span class="card-meta-tag">Social</span></div><div class="card-hover-play"><i data-lucide="play"></i></div></div>
+                    </div>
+                    <div class="spatial-card open-modal" data-modal="modal-instagram" data-tags="instagram reel social 5">
+                        <video autoplay muted loop playsinline><source src="assets/videos/Instagram/5.mp4" type="video/mp4"></video>
+                        <div class="card-glass-scrim"></div>
+                        <div class="card-info"><div class="card-text"><h3>Reel #05</h3><span class="card-meta-tag">Social</span></div><div class="card-hover-play"><i data-lucide="play"></i></div></div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ─── Director About Modal ─── -->
+    <div class="glass-modal" id="about-modal">
+        <div class="modal-header">
+            <h2>Director Spotlight</h2>
+            <button class="close-modal-btn" onclick="document.getElementById('about-modal').classList.remove('active')"><i data-lucide="x"></i></button>
+        </div>
+        <div style="max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; background: rgba(255,255,255,0.05); padding: 36px; border-radius: 28px; border: 1px solid var(--glass-border); box-shadow: 0 30px 70px rgba(0,0,0,0.6);">
+            <img src="assets/images/ChatGPT Image Aug 28, 2026, 08_25_00 PM.png" alt="Mohita Subudhi" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.25); box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
+            <div>
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 6px;">Mohita Subudhi</h3>
+                <p style="color: var(--accent-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.82rem; margin-bottom: 14px;">Commercial AI Cinematographer & Creative Director</p>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">Pioneering ultra-realistic, narrative-driven AI commercial productions. Specializing in high-end fashion, kinetic product commercials, dynamic cinematography, and custom virtual personas for global brands.</p>
+            </div>
+            <button class="btn-play-hero" onclick="document.getElementById('about-modal').classList.remove('active'); document.getElementById('contact-modal').classList.add('active');">
+                <i data-lucide="mail"></i> Book a Production Call
+            </button>
+        </div>
+    </div>
+
+    <!-- ─── Contact Modal ─── -->
+    <div class="glass-modal" id="contact-modal">
+        <div class="modal-header">
+            <h2>Production Inquiries</h2>
+            <button class="close-modal-btn" onclick="document.getElementById('contact-modal').classList.remove('active')"><i data-lucide="x"></i></button>
+        </div>
+        <div style="max-width: 580px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; background: rgba(255,255,255,0.05); padding: 36px; border-radius: 28px; border: 1px solid var(--glass-border); box-shadow: 0 30px 70px rgba(0,0,0,0.6);">
+            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Let's Create Your Next Masterpiece</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">Available for brand campaigns, creative direction, and cinematic world-building.</p>
+            
+            <a href="mailto:mohitasubudhi@gmail.com" style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 16px; text-decoration: none; color: #fff; border: 1px solid var(--glass-border); transition: all 0.2s;">
+                <i data-lucide="mail" style="color:var(--accent-cyan)"></i>
+                <div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">Email Directly</div>
+                    <div style="font-weight: 600;">mohitasubudhi@gmail.com</div>
+                </div>
+            </a>
+
+            <a href="https://wa.me/917205757234" target="_blank" style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 16px; text-decoration: none; color: #fff; border: 1px solid var(--glass-border); transition: all 0.2s;">
+                <i data-lucide="message-circle" style="color:#22c55e"></i>
+                <div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">WhatsApp / Direct Line</div>
+                    <div style="font-weight: 600;">+91 7205757234</div>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ch-mohita-subudhi-4b67bb267" target="_blank" style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 16px; text-decoration: none; color: #fff; border: 1px solid var(--glass-border); transition: all 0.2s;">
+                <i data-lucide="linkedin" style="color:#38bdf8"></i>
+                <div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">LinkedIn Profile</div>
+                    <div style="font-weight: 600;">Mohita Subudhi</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MODALS
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- Helper macro: each modal uses the same structure -->
+
+    <!-- Mornze -->
+    <div class="glass-modal" id="modal-mornze">
+        <div class="modal-header"><h2>Mornze Campaign</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/6.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/7.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/8.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/9.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/10.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/11.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/12.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/13.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/14.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/15.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/16.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/mornze/17.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Avatar -->
+    <div class="glass-modal" id="modal-ai-avatar">
+        <div class="modal-header"><h2>AI Avatar</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/AI Avatar/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/AI Avatar/Day 12.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/AI Avatar/Day 22 (1).mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="glass-modal" id="modal-instagram">
+        <div class="modal-header"><h2>Instagram</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/6.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/7.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/8.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/9.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/10.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/11.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/12.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/13.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Instagram/14.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kurti -->
+    <div class="glass-modal" id="modal-kurti">
+        <div class="modal-header"><h2>Kurti</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Kurti/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Kurti/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Kurti/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ChatGPT Ad -->
+    <div class="glass-modal" id="modal-chatgpt-ad">
+        <div class="modal-header"><h2>ChatGPT Ad</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/ChatGPT Ad/ChatGPT ad.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cap -->
+    <div class="glass-modal" id="modal-cap">
+        <div class="modal-header"><h2>Cap Collection</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/cap/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/cap/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/cap/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dairy Milk -->
+    <div class="glass-modal" id="modal-dairy-milk">
+        <div class="modal-header"><h2>Dairy Milk</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/dairy-milk/1 Audio.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jewelry -->
+    <div class="glass-modal" id="modal-jewelry">
+        <div class="modal-header"><h2>Jewelry Collection</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/6.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/7.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/jewelry/8.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Course -->
+    <div class="glass-modal" id="modal-online-course">
+        <div class="modal-header"><h2>AI Course Ad</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/online-course/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saree -->
+    <div class="glass-modal" id="modal-saree">
+        <div class="modal-header"><h2>Saree Editorials</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/6.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/7.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/8.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/saree/9.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sneaker -->
+    <div class="glass-modal" id="modal-sneaker">
+        <div class="modal-header"><h2>Sneaker</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/Sneaker.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sneaker/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sunglasses -->
+    <div class="glass-modal" id="modal-sunglasses">
+        <div class="modal-header"><h2>Sunglasses</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/sunglasses/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Watch -->
+    <div class="glass-modal" id="modal-watch">
+        <div class="modal-header"><h2>Watch</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/watch/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/watch/1.1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UGC -->
+    <div class="glass-modal" id="modal-ugc">
+        <div class="modal-header"><h2>UGC</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/4.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/5.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/Commercial/UGC/6.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fighting -->
+    <div class="glass-modal" id="modal-fighting">
+        <div class="modal-header"><h2>Fighting</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/Fighting/Full 1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div><div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mythology -->
+    <div class="glass-modal" id="modal-mythology">
+        <div class="modal-header"><h2>Mythology</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/Mythology/Ramayan.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/Mythology/Varanasi .mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trailer -->
+    <div class="glass-modal" id="modal-trailer">
+        <div class="modal-header"><h2>Trailer</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/Trailor/Library.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/Trailor/With Auido.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Love Story -->
+    <div class="glass-modal" id="modal-love-story">
+        <div class="modal-header"><h2>Love Story</h2><button class="close-modal-btn"><i data-lucide="x"></i></button></div>
+        <div class="modal-body">
+            <div class="swiper modalSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/love-story/1.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/love-story/2.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                    <div class="swiper-slide"><video loop playsinline><source src="assets/videos/cinematics/love-story/3.mp4" type="video/mp4"></video><div class="modal-controls"><button class="control-btn play-pause-btn"><i data-lucide="play"></i></button><button class="control-btn fullscreen-btn"><i data-lucide="maximize"></i></button></div></div>
+                </div>
+                <div class="swiper-button-next fs-nav"></div>
+                <div class="swiper-button-prev fs-nav"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- True Fullscreen Player -->
+    <div id="fullscreen-player" class="fs-player hidden">
+        <div class="fs-video-wrapper">
+            <video id="fs-video" playsinline></video>
+            <button class="fs-nav-btn fs-close"><i data-lucide="x"></i></button>
+            <button class="fs-nav-btn fs-prev"><i data-lucide="chevron-left"></i></button>
+            <button class="fs-nav-btn fs-next"><i data-lucide="chevron-right"></i></button>
+            <div class="fs-controls">
+                <button class="control-btn" id="fs-play-btn"><i data-lucide="pause"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Filtering & Search Script -->
+    <script>
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.tab-btn, .dock-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            if (btn) btn.classList.add('active');
+            
+            var groups = document.querySelectorAll('.portfolio-group');
+            if (cat === 'all') {
+                groups.forEach(function(g) { g.style.display = 'block'; });
+            } else {
+                groups.forEach(function(g) {
+                    if (g.getAttribute('data-category') === cat) {
+                        g.style.display = 'block';
+                    } else {
+                        g.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        function handleSearch(query) {
+            var q = query.toLowerCase().trim();
+            var cards = document.querySelectorAll('.spatial-card');
+            cards.forEach(function(card) {
+                var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+                var title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+                if (!q || tags.indexOf(q) !== -1 || title.indexOf(q) !== -1) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
