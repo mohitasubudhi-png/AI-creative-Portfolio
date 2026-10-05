@@ -389,13 +389,24 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; }
 
 .card-meta {
     position: absolute; bottom: 0; left: 0; width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.92), transparent);
-    padding: 3rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
+    padding: 3.5rem 1.5rem 1.5rem;
+    pointer-events: none;
 }
-.card-meta h3 { font-size: 1.6rem; font-style: italic; margin-bottom: 4px; }
+.card-meta h3 {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    margin-bottom: 4px;
+}
 .card-meta span {
-    font-size: 0.75rem; text-transform: uppercase;
-    letter-spacing: 1px; color: var(--text-secondary);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    font-weight: 500;
 }
 .drilldown-btn {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -544,16 +555,36 @@ a.contact-item:hover i { color: black; }
 .modal-header {
     padding: 2rem 4vw; display: flex;
     justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--glass-border); flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12); flex-shrink: 0;
 }
-.modal-header h2 { font-size: clamp(2rem, 4vw, 3rem); font-style: italic; }
+.modal-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-style: italic;
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.8);
+    letter-spacing: -0.5px;
+}
 
 .close-modal-btn {
     width: 54px; height: 54px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #FFFFFF !important;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
-.close-modal-btn:hover { background: white; color: black; transform: rotate(90deg); }
+.close-modal-btn i {
+    width: 24px; height: 24px;
+    stroke-width: 2.2px;
+}
+.close-modal-btn:hover {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #FFFFFF;
+    transform: rotate(90deg) scale(1.08);
+}
 
 .modal-body {
     flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 4vw; overflow: hidden;
